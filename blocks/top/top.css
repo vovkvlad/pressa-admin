@@ -1,0 +1,12 @@
+.top{
+    height: 40px;
+    background: #1C1C1C;
+    border-radius: 15px 15px 0px 0px;
+}
+.top h1{
+    margin: 0px;
+    color: white;
+    text-align: center;
+    font-size: 1.8em;
+    padding-top: 4px;
+}

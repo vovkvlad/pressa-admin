@@ -1,0 +1,15 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    /*background: rgba(159, 159, 159, 0.80);*/
+    background: url("../../src/wallpaper_800x480_1335.png");
+}
+.wrapper p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 200px;
+    margin-left: -185px;
+    font-size: 0.8em;
+    color: rgba(100, 67, 67,1.0);
+}

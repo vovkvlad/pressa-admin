@@ -1,0 +1,33 @@
+.login-window{
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    margin: -150px 0 0 -200px;
+    background: rgba(255,255,255,0.8);
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 90px 10px rgba(255,255,255,0.3);
+}
+
+.login-window fieldset{
+    margin: 25px 10px 20px 10px;
+    height: auto;
+    border: none;
+    padding: 5px 10px 5px 10px;
+
+}
+.login-window input{
+    display: block;
+    margin: 10px 0px 10px 100px;
+
+}
+.login-window label{
+    margin-left: 100px;
+}
+.login-window button{
+    margin-top: 20px;
+    margin-left: 125px;
+    width: 100px;
+    height: 25px;
+}
