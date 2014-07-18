@@ -1,0 +1,15 @@
+.news-block{
+    background: rgba(255,255,255,0.8);
+    width: 1000px;
+    min-height: 500px;
+    border-radius: 10px;
+    margin: 3% auto;
+    position: relative;
+    box-shadow: 0px 0px 90px 10px rgba(255,255,255,0.2);
+}
+
+.news-block__news-header{
+    text-align: center;
+    padding-top: 40px;
+    margin: 0;
+}

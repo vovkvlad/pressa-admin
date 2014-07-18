@@ -1,0 +1,11 @@
+.table{
+    position: relative;
+    margin: auto;
+    border: 1px solid #a7a7a7;
+}
+.table__darkcell{
+    background: rgb(194, 207, 222);
+}
+.table__lightcell{
+    background: #E8E8E8;
+}
