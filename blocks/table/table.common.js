@@ -1,4 +1,5 @@
 BN.addDecl('table').blockTemplate(function(ctx){
+    ctx.tag('table');
     var lastnews = ctx.param('LastNews') || [];
     ctx.content(lastnews.map(function(item, index){
         return index % 2 === 0 ? {elem: 'lightcell', title: item.title, newsid: item.nid} : {elem: 'darkcell', title: item.title, newsid: item.nid};
