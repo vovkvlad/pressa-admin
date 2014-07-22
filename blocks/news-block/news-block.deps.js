@@ -1,5 +1,6 @@
 ({
     shouldDeps: [
-        {block: 'table-block'}
+        {block: 'table-block'},
+        {block: 'tinymce-block'}
     ]
 })

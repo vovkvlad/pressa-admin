@@ -7,5 +7,6 @@ exports.blocks = [
 
     // pages
     {block: 'login-page'},
-    {block: 'all-news-page'}
+    {block: 'all-news-page'},
+    {block: 'editor-page'}
 ];
