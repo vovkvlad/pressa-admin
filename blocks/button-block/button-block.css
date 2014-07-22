@@ -1,0 +1,14 @@
+.button-block{
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+}
+.button-block__buttonchange{
+    margin: 0 40px;
+    display: inline;
+}
+.button-block__buttonadd{
+    margin: 0 40px;
+    display: inline;
+}

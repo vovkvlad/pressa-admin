@@ -1,6 +1,5 @@
 ({
     shouldDeps: [
-        {block: 'table-block'},
-        {block: 'button-block'}
+        {block: 'table-block'}
     ]
 })
