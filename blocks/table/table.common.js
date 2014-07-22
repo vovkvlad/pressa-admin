@@ -2,8 +2,8 @@ BN.addDecl('table').onSetMod({
     js: function(){
         this._button = this.findElem('changebutton');
         this._rows = this.findElem('cell');
-        this._currentRowID = null;
-        this._button.on('click', this._buttonClick.bind(this));
+        //this._currentRowID = null;
+        //this._button.on('click', this._buttonClick.bind(this));
         this._rows.on('click', this._rowClick.bind(this));
 
     }
@@ -14,17 +14,18 @@ BN.addDecl('table').onSetMod({
             var rowElem = this.elemify(e.target, 'cell');
             //var rowElem = e.toElement;
             var a1 = rowElem;
-            this._currentRowID = this.elemParams(rowElem);
+            var id = this.elemParams(rowElem);
             this.delMod(this._rows, 'selected');
             this.setMod(rowElem, 'selected', 'yes');
-        },
-        _buttonClick: function(e){
-            if(this._currentRowID === null){
-                alert('Choose row first');
-                return;
-            }
-            alert(this._currentRowID);
+            this.button.attr('href', 'edit/' + id, true);//true is for reassigning href
         }
+//        _buttonClick: function(e){
+//            if(this._currentRowID === null){
+//                alert('Choose row first');
+//                return;
+//            }
+//            alert(this._currentRowID);
+//        }
     }).blockTemplate(function(ctx){
         ctx.js(true);
 
