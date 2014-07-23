@@ -35,7 +35,12 @@ BN.addDecl('tinymce-block').onSetMod({
 }).blockTemplate(function(ctx){
         ctx.js(true);
         ctx.content([
-            {elem: 'input', type: 'radio', name: 'title'},
+            {elem: 'label', for_atr: 'title', content: 'Назва статті'},
+            {elem: 'input', type: 'text', name: 'title'},
+            {elem: 'label', content: 'Чи э дана новина важливою?'},
+            {elem: 'input', type: 'checkbox', name: 'isbreaking', value: 'checkb1'},
+            {elem: 'label', content: 'Оберіть категорію'},
+            {elem: 'select'},
             {
                 elem: 'tinymcesource',
                 tag: 'script',
@@ -54,6 +59,44 @@ BN.addDecl('tinymce-block').onSetMod({
                     elem: 'textarea',
                     tag: 'textarea'
                 }
-            }
+            },
+            {elem: 'submitbutton', tag: 'button', content: 'Додати новину'}
         ]);
+    }).elemTemplate({
+        input: function(ctx){
+            var params = ctx.json();
+            ctx.tag('input');
+            ctx.attr('name', params.name);
+            ctx.attr('type', params.type);
+            ctx.attr('id', params.name);
+            if(params.value) ctx.param('value', params.value);
+        },
+        label: function(ctx){
+            ctx.tag('label');
+            var params = ctx.json();
+            if (params.title) ctx.attr('for', params.for_atr);
+        },
+        select: function(ctx){
+            ctx.tag('select');
+            ctx.content([
+                {
+                    elem: 'option',
+                    tag: 'option',
+                    value: 'Students life',
+                    content: 'Students life'
+                },
+                {
+                    elem: 'option',
+                    tag: 'option',
+                    value: 'News',
+                    content: 'News'
+                },
+                {
+                    elem: 'option',
+                    tag: 'option',
+                    value: 'Conferences',
+                    content: 'Conferences'
+                }
+            ]);
+        }
     });

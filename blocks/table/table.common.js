@@ -1,23 +1,24 @@
 BN.addDecl('table').onSetMod({
     js: function(){
-        this._button = this.findElem('changebutton');
-        this._rows = this.findElem('cell');
+        this._butt = this.findElem('changebutton');
+        this._cells = this.findElem('cell');
         //this._currentRowID = null;
         //this._button.on('click', this._buttonClick.bind(this));
-        this._rows.on('click', this._rowClick.bind(this));
+        this._cells.on('click', this._rowClick.bind(this));
 
     }
 }).instanceProp({
         _rowClick: function(e){
             // var a2 = e.currentTarget;
-            console.log(e.target);
-            var rowElem = this.elemify(e.target, 'cell');
-            //var rowElem = e.toElement;
-            var a1 = rowElem;
+            console.log(this);
+            //var rowElem = this.elemify(jQuery(e.currentTarget), 'cell');
+            var rowElem = jQuery(e.currentTarget);
             var id = this.elemParams(rowElem);
-            this.delMod(this._rows, 'selected');
+
+
+            this.delMod(this._cells, 'selected');
             this.setMod(rowElem, 'selected', 'yes');
-            this.button.attr('href', 'edit/' + id, true);//true is for reassigning href
+            this._butt.attr('href', 'edit/' + id.id, true);//true is for reassigning href
         }
 //        _buttonClick: function(e){
 //            if(this._currentRowID === null){
@@ -59,7 +60,7 @@ BN.addDecl('table').onSetMod({
         },
         addbutton: function(ctx){
             ctx.tag('a');
-            ctx.attr('href', '#');
+            ctx.attr('href', 'edit');
             ctx.content('Додати')
         },
         table: function(ctx){
