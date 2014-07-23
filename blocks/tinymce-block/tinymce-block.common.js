@@ -31,14 +31,28 @@ BN.addDecl('tinymce-block').onSetMod({
                 {title: 'Test template 2', content: 'Test 2'}
             ]
         });
+        this._title = this.findElem('input', 'title', 'true');
+        this._checkbox = this.findElem('input', 'checkbox', 'true');
+        this._category = this.findElem('select');
+        this._btn = this.findElem('submitbutton');
+        this._btn.on('click', this._btnClick.bind(this));
     }
-}).blockTemplate(function(ctx){
+}).instanceProp({
+        _btnClick: function(){
+            console.log(this._title[0].value);
+            console.log(this._checkbox[0].checked);
+            var b = this._category[0].options[this._category[0].selectedIndex].innerHTML;
+            console.log(this._category[0].options[this._category[0].selectedIndex].innerHTML);
+            var a = 5;
+            a+5;
+        }
+    }).blockTemplate(function(ctx){
         ctx.js(true);
         ctx.content([
             {elem: 'label', for_atr: 'title', content: 'Назва статті'},
-            {elem: 'input', type: 'text', name: 'title'},
+            {elem: 'input', type: 'text', name: 'title', mods: {title: true}},//mod is used for identifying title among other inputs
             {elem: 'label', content: 'Чи э дана новина важливою?'},
-            {elem: 'input', type: 'checkbox', name: 'isbreaking', value: 'checkb1'},
+            {elem: 'input', type: 'checkbox', name: 'isbreaking', value: 'checkb1', mods: { checkbox: true}},
             {elem: 'label', content: 'Оберіть категорію'},
             {elem: 'select'},
             {

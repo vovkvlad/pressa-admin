@@ -29,5 +29,8 @@
     height: 25px;
 }
 .tinymce-block__submitbutton{
-
+    margin-top: 30px;
+    font-size: 1.1em;
+    height: 40px;
+    margin-left: 340px;
 }
