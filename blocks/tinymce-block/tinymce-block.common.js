@@ -39,6 +39,8 @@ BN.addDecl('tinymce-block').onSetMod({
     }
 }).instanceProp({
         _btnClick: function(){
+            //var text = this.domElem[0].childNodes[7].firstChild.firstChild.childNodes[1].childNodes[0].contentDocument.all[5].innerHTML;
+
             console.log(this._title[0].value);
             console.log(this._checkbox[0].checked);
             var b = this._category[0].options[this._category[0].selectedIndex].innerHTML;
@@ -50,7 +52,7 @@ BN.addDecl('tinymce-block').onSetMod({
         ctx.js(true);
         ctx.content([
             {elem: 'label', for_atr: 'title', content: 'Назва статті'},
-            {elem: 'input', type: 'text', name: 'title', mods: {title: true}},//mod is used for identifying title among other inputs
+            {elem: 'input', type: 'text', name: 'title', mods: {title: true}},//mod is used to identify particular input among other inputs
             {elem: 'label', content: 'Чи э дана новина важливою?'},
             {elem: 'input', type: 'checkbox', name: 'isbreaking', value: 'checkb1', mods: { checkbox: true}},
             {elem: 'label', content: 'Оберіть категорію'},
