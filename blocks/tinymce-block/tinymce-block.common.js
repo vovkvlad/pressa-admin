@@ -39,12 +39,26 @@ BN.addDecl('tinymce-block').onSetMod({
     }
 }).instanceProp({
         _btnClick: function(){
-            //var text = this.domElem[0].childNodes[7].firstChild.firstChild.childNodes[1].childNodes[0].contentDocument.all[5].innerHTML;
+            var article = {
+                title: this._title[0].value,
+                content: tinyMCE.activeEditor.getContent({format : 'raw'}),
+                category: this._category[0].value,
+                isbreaking: this._checkbox[0].checked ? 1 : 0,
+                date: new Date()
+            };
 
-            console.log(this._title[0].value);
-            console.log(this._checkbox[0].checked);
-            var b = this._category[0].options[this._category[0].selectedIndex].innerHTML;
-            console.log(this._category[0].options[this._category[0].selectedIndex].innerHTML);
+            var options = {
+                body: JSON.stringify(article)
+            }
+            BN('pressa-api').post('192.168.174.130:8333', options).then(function(data){
+                console.log(data);
+            });
+            //var text = this.domElem[0].childNodes[7].firstChild.firstChild.childNodes[1].childNodes[0].contentDocument.all[5].innerHTML;
+//            tinyMCE.activeEditor.getContent({format : 'raw'})
+//            console.log(this._title[0].value);
+//            console.log(this._checkbox[0].checked);
+//            var b = this._category[0].options[this._category[0].selectedIndex].innerHTML;
+//            console.log(this._category[0].options[this._category[0].selectedIndex].innerHTML);
             var a = 5;
             a+5;
         }
@@ -98,19 +112,25 @@ BN.addDecl('tinymce-block').onSetMod({
                 {
                     elem: 'option',
                     tag: 'option',
-                    value: 'Students life',
+                    attrs: {
+                        value: 'studentslife'
+                    },
                     content: 'Students life'
                 },
                 {
                     elem: 'option',
                     tag: 'option',
-                    value: 'News',
+                    attrs: {
+                        value: 'news'
+                    },
                     content: 'News'
                 },
                 {
                     elem: 'option',
                     tag: 'option',
-                    value: 'Conferences',
+                    attrs: {
+                        value: 'conferences'
+                    },
                     content: 'Conferences'
                 }
             ]);
