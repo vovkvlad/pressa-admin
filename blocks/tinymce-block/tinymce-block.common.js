@@ -29,8 +29,18 @@ BN.addDecl('tinymce-block').onSetMod({
             templates: [
                 {title: 'Test template 1', content: 'Test 1'},
                 {title: 'Test template 2', content: 'Test 2'}
-            ]
+            ],
+            init_instance_callback: function(){
+                if(article){
+                    setinfo(article._res[0]);
+                }
+                else console.log("it's empty");
+            }
         });
+        var NewsID = parseInt(this.elemParams('form').id);
+        if(NewsID) var article = this._downloadArticle(NewsID);//if we are editing - get info from api
+        var setinfo = this._setInfo; //setinfo and article variables are necessary cause tinymce.init() has different context,
+                                     // and because of this this._title etc, are not reachable from initi
         this._title = this.findElem('input', 'title', 'true');
         this._checkbox = this.findElem('input', 'checkbox', 'true');
         this._category = this.findElem('select');
@@ -53,17 +63,20 @@ BN.addDecl('tinymce-block').onSetMod({
             BN('pressa-api').post('192.168.174.130:8333', options).then(function(data){
                 console.log(data);
             });
-            //var text = this.domElem[0].childNodes[7].firstChild.firstChild.childNodes[1].childNodes[0].contentDocument.all[5].innerHTML;
-//            tinyMCE.activeEditor.getContent({format : 'raw'})
-//            console.log(this._title[0].value);
-//            console.log(this._checkbox[0].checked);
-//            var b = this._category[0].options[this._category[0].selectedIndex].innerHTML;
-//            console.log(this._category[0].options[this._category[0].selectedIndex].innerHTML);
-            var a = 5;
-            a+5;
+        },
+        _downloadArticle: function(nid) {
+            return BN('pressa-api').get(nid).then(function(data){
+                return data;
+            });
+        },
+        _setInfo: function(articleObj){
+            tinyMCE.activeEditor.setContent(articleObj.content);
+            this._category[0].value = articleObj.category;
+
         }
     }).blockTemplate(function(ctx){
         ctx.js(true);
+        var nid = ctx.json().nid;
         ctx.content([
             {elem: 'label', for_atr: 'title', content: 'Назва статті'},
             {elem: 'input', type: 'text', name: 'title', mods: {title: true}},//mod is used to identify particular input among other inputs
@@ -85,6 +98,7 @@ BN.addDecl('tinymce-block').onSetMod({
                 attrs: {
                     method: 'post'
                 },
+                js: {id: nid},
                 content: {
                     elem: 'textarea',
                     tag: 'textarea'
