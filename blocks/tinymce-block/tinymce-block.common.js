@@ -39,7 +39,7 @@ BN.addDecl('tinymce-block').onSetMod({
         });
         var NewsID = parseInt(this.elemParams('form').id);
         if(NewsID) var article = this._downloadArticle(NewsID);//if we are editing - get info from api
-        var setinfo = this._setInfo; //setinfo and article variables are necessary cause tinymce.init() has different context,
+        var setinfo = this._setInfo.bind(this); //setinfo and article variables are necessary cause tinymce.init() has different context,
                                      // and because of this this._title etc, are not reachable from initi
         this._title = this.findElem('input', 'title', 'true');
         this._checkbox = this.findElem('input', 'checkbox', 'true');
@@ -72,6 +72,8 @@ BN.addDecl('tinymce-block').onSetMod({
         _setInfo: function(articleObj){
             tinyMCE.activeEditor.setContent(articleObj.content);
             this._category[0].value = articleObj.category;
+            articleObj.isbreaking == 1 ? this._checkbox[0].checked = true : this._checkbox[0].checked = false;
+            this._title[0].value = articleObj.title;
 
         }
     }).blockTemplate(function(ctx){
