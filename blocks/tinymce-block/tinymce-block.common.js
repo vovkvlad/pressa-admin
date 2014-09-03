@@ -34,7 +34,6 @@ BN.addDecl('tinymce-block').onSetMod({
                 if(article){
                     setinfo(article._res[0]);
                 }
-                else console.log("it's empty");
             }
         });
         var NewsID = parseInt(this.elemParams('form').id);

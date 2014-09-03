@@ -1,0 +1,27 @@
+.imageUpload-block{
+    height: 120px;
+    width: 300px;
+    margin-left: 850px;
+    margin-top: 170px;
+    border: groove;
+    padding: 5px;
+}
+.imageUpload-block__label{
+    margin-left: 70px;
+    font-size: 1.2em;
+}
+.imageUpload-block__input{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+.imageUpload-block__uploadbutton{
+    margin-left: 90px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    height: 30px;
+}
+#textbox{
+    width: 280px;
+}

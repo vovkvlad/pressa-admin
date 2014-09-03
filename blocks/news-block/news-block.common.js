@@ -4,7 +4,9 @@ BN.addDecl('news-block').blockTemplate(function(ctx){
     {
         ctx.content([
             {elem: 'news-header', tag: 'h3', content: 'Редагування новини'},
-            {block: 'tinymce-block', nid: data.articleNumber}
+            {block: 'tinymce-block', nid: data.articleNumber},
+            {block: 'imageUpload-block'},
+            {block: 'url-block'}
         ]);
     }
     else{
