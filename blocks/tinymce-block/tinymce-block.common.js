@@ -59,7 +59,7 @@ BN.addDecl('tinymce-block').onSetMod({
             var options = {
                 body: JSON.stringify(article)
             }
-            BN('pressa-api').post('192.168.174.130:8333', options).then(function(data){
+            BN('pressa-api').post('', options).then(function(data){
                 console.log(data);
             });
         },

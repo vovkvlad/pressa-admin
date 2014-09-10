@@ -8,14 +8,16 @@ BN.addDecl('imageUpload-block').onSetMod({
             var formelement = jQuery('#uploadForm');
             var formdata = new FormData(formelement);
             jQuery.ajax({
-                url: '192.168.174.130:2000',
+                url: '/upload',
                 data: formdata,
                 cache: false,
                 contentType: false,
                 processData: false,
                 type: 'POST',
-                success: function(data){
+                success: function(data, status, jqxhr){
                     console.log(data);
+                    console.log(status);
+                    console.log(jqxhr);
                     alert(data);
                 },
                 error: function(jqxhr, status, err){
@@ -25,6 +27,7 @@ BN.addDecl('imageUpload-block').onSetMod({
                 }
             })
             var a =1;
+            return false;
         }
     }).blockTemplate(function(ctx){
         ctx.js(true);
